@@ -1,9 +1,10 @@
 import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
 import UserType from '../modules/user/userType';
 import UserModel from '../modules/user/userModel';
+import UserMutation from '../modules/user/mutations/userMutations';
 
-const RootQuery = new GraphQLObjectType({
-  name: 'RootQueryType',
+const UserQuery = new GraphQLObjectType({
+  name: 'UserQueryType',
   fields: {
     user: {
       type: UserType,
@@ -16,5 +17,6 @@ const RootQuery = new GraphQLObjectType({
 })
 
 export default new GraphQLSchema({
-  query: RootQuery
+  query: UserQuery,
+  mutation: UserMutation
 });
