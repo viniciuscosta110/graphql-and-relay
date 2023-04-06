@@ -7,10 +7,6 @@ export const initDB = () => {
   );
 
   mongoose.connection.once('open', () => {
-    // return all collections
-    mongoose.connection.db.listCollections().toArray().then((collections) => {
-      console.log(collections);
-    });
     console.log('connected to database');
   });
 
