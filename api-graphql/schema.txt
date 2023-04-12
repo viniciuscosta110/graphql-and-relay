@@ -1,0 +1,29 @@
+schema {
+  query: UserQueryType
+  mutation: UserMutation
+}
+
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+type User {
+  id: String!
+  name: String!
+  birth_date: String!
+  mother_name: String!
+  phone: String
+}
+
+type UserMutation {
+  addUser(name: String, birth_date: String, mother_name: String, phone: String): User
+  updateUser(id: String, name: String, birth_date: String, mother_name: String, phone: String): User
+  deleteUser(id: String): User
+}
+
+type UserQueryType {
+  user(id: String): User
+}
+
