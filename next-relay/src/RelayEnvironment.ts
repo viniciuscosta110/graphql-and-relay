@@ -7,8 +7,6 @@ import {
   GraphQLResponse,
 } from "relay-runtime";
 
-import { withHydrateDatetime } from 'relay-nextjs/date'
-
 const HTTP_ENDPOINT = "http://localhost:5000/graphql";
 
 const fetchFn: FetchFunction = async (request, variables) => {
