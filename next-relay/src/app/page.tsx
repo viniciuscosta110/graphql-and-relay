@@ -17,8 +17,6 @@ const Home = () => {
   const phoneRef = useRef<HTMLInputElement>(null)
 
   const relayQuerySetup = async (id : string) => {
-
-    //Define the query Type and the query
     const environment = initRelayEnvironment();
     const query = graphql`
       query pageUserQuery($id: String!) {
@@ -69,7 +67,6 @@ const Home = () => {
           phone: phone!
         },
         onCompleted: (data: any) => {
-          console.log(data)
           setUser(data.addUser)
         }
       }
