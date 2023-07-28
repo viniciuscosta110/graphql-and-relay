@@ -8,6 +8,8 @@ export const initDB = () => {
 
   mongoose.connection.once('open', () => {
     console.log('connected to database');
+    console.log('-------------------');
+    console.log('Access: http://localhost:5000/graphql');
   });
 
 }

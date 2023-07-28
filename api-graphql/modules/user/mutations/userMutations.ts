@@ -13,6 +13,7 @@ const UserMutation = new GraphQLObjectType({
         birth_date: { type: GraphQLString },
         mother_name: { type: GraphQLString },
         phone: { type: GraphQLString },
+        cpf: { type: GraphQLString },
       },
       resolve(parent, args) {
         const user = new UserModel({
@@ -20,6 +21,7 @@ const UserMutation = new GraphQLObjectType({
           birth_date: args.birth_date,
           mother_name: args.mother_name,
           phone: args.phone,
+          cpf: args.cpf,
         });
         return user.save();
       },
@@ -32,6 +34,7 @@ const UserMutation = new GraphQLObjectType({
         birth_date: { type: GraphQLString },
         mother_name: { type: GraphQLString },
         phone: { type: GraphQLString },
+        cpf: { type: GraphQLString },
       },
       resolve(parent, args) {
         return UserModel.findByIdAndUpdate(
@@ -42,6 +45,7 @@ const UserMutation = new GraphQLObjectType({
               birth_date: args.birth_date,
               mother_name: args.mother_name,
               phone: args.phone,
+              cpf: args.cpf,
             },
           },
           { new: true }
