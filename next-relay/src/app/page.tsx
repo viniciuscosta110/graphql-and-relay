@@ -15,6 +15,7 @@ const Home = () => {
   const birthDateRef = useRef<HTMLInputElement>(null)
   const motherNameRef = useRef<HTMLInputElement>(null)
   const phoneRef = useRef<HTMLInputElement>(null)
+  const cpfRef = useRef<HTMLInputElement>(null)
 
   const relayQuerySetup = async (id : string) => {
     const environment = initRelayEnvironment();
@@ -25,7 +26,8 @@ const Home = () => {
           name,
           birth_date,
           mother_name,
-          phone
+          phone,
+          cpf
         }
       }
     `
@@ -35,7 +37,7 @@ const Home = () => {
   
     return data
   }
-
+  
   const addUser = (e: FormEvent) => {
     e.preventDefault()
 
@@ -43,15 +45,17 @@ const Home = () => {
     const birth_date = birthDateRef.current?.value
     const mother_name = motherNameRef.current?.value
     const phone = phoneRef.current?.value
+    const cpf = cpfRef.current?.value
 
     const mutate = graphql`
-      mutation pageAddUserMutation($name: String!, $birth_date: String!, $mother_name: String!, $phone: String!) {
-        addUser(name: $name, birth_date: $birth_date, mother_name: $mother_name, phone: $phone) {
+      mutation pageAddUserMutation($name: String!, $birth_date: String!, $mother_name: String!, $phone: String!, $cpf: String!) {
+        addUser(name: $name, birth_date: $birth_date, mother_name: $mother_name, phone: $phone, cpf: $cpf) {
           id,
           name,
           birth_date,
           mother_name,
-          phone
+          phone,
+          cpf,
         }
       }
     `
@@ -64,7 +68,8 @@ const Home = () => {
           name: name!,
           birth_date: birth_date!,
           mother_name: mother_name!,
-          phone: phone!
+          phone: phone!,
+          cpf: cpf!
         },
         onCompleted: (data: any) => {
           setUser(data.addUser)
@@ -109,6 +114,10 @@ const Home = () => {
           <label htmlFor="phone">Phone</label>
           <input className='border border-solid border-black rounded' id='phone' ref={phoneRef} type="text" />
         </div>
+        <div className='flex justify-between w-80'>
+          <label htmlFor="cpf">CPF</label>
+          <input className='border border-solid border-black rounded' id='cpf' ref={cpfRef} type="text" />
+        </div>
         <button className='flex justify-center w-40' type="submit">Add User</button>
       </form>
 
@@ -118,6 +127,7 @@ const Home = () => {
           <h2>{user.birth_date}</h2>
           <h2>{user.mother_name}</h2>
           <h2>{user.phone}</h2>
+          <h2>{user.cpf}</h2>
         </div>
       ): null}
       

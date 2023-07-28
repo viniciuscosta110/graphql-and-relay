@@ -14,12 +14,13 @@ type User {
   name: String!
   birth_date: String!
   mother_name: String!
-  phone: String
+  phone: String!
+  cpf: String!
 }
 
 type UserMutation {
-  addUser(name: String, birth_date: String, mother_name: String, phone: String): User
-  updateUser(id: String, name: String, birth_date: String, mother_name: String, phone: String): User
+  addUser(name: String, birth_date: String, mother_name: String, phone: String, cpf: String): User
+  updateUser(id: String, name: String, birth_date: String, mother_name: String, phone: String, cpf: String): User
   deleteUser(id: String): User
 }
 
